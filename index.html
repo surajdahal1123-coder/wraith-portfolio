@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WRaith | Suraj Dahal</title>
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #050505;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+main {
+    width: 100%;
+}
+
+
+/* =====================================================
+   3D CANVAS
+===================================================== */
+
+#scene {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   RED ATMOSPHERE
+===================================================== */
+
+.red-glow {
+    position: fixed;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(150, 0, 0, 0.25),
+            transparent 70%
+        );
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* =====================================================
+   GRID
+===================================================== */
+
+.grid {
+    position: fixed;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 60px 60px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 90%
+        );
+
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar {
+    position: fixed;
+
+    left: 35px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 180px;
+
+    z-index: 20;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    margin-bottom: 55px;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+nav a {
+    color: rgba(255,255,255,0.42);
+    text-decoration: none;
+
+    font-size: 11px;
+    letter-spacing: 2px;
+
+    transition:
+        color 0.3s,
+        transform 0.3s;
+}
+
+nav a:hover {
+    color: #ff3333;
+    transform: translateX(7px);
+}
+
+nav a.active {
+    color: #ffffff;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+
+    background: rgba(255,255,255,0.12);
+
+    margin-top: 40px;
+}
+
+.side-text {
+    margin-top: 15px;
+
+    font-size: 9px;
+    letter-spacing: 3px;
+
+    color: rgba(255,255,255,0.3);
+}
+
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+section {
+    position: relative;
+    z-index: 5;
+}
+
+
+/* =====================================================
+   HOME
+===================================================== */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding-left: 180px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+
+    max-width: 700px;
+}
+
+.eyebrow {
+    color: #ff3c3c;
+
+    font-size: 10px;
+    letter-spacing: 4px;
+
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(80px, 15vw, 190px);
+
+    line-height: 0.8;
+
+    letter-spacing: -8px;
+
+    font-weight: 900;
+
+    text-shadow:
+        0 0 50px rgba(255,0,0,0.15);
+}
+
+.description {
+    max-width: 480px;
+
+    margin: 35px auto;
+
+    color: rgba(255,255,255,0.55);
+
+    line-height: 1.8;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   EXPLORE
+===================================================== */
+
+#exploreBtn {
+    position: relative;
+
+    border: 1px solid rgba(255,255,255,0.35);
+
+    background: rgba(0,0,0,0.35);
+
+    color: white;
+
+    padding: 16px 40px;
+
+    cursor: pointer;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    transition:
+        background 0.3s,
+        border 0.3s,
+        transform 0.3s;
+}
+
+#exploreBtn:hover {
+    background: #a00000;
+    border-color: #ff3333;
+
+    transform: translateY(-3px);
+}
+
+
+/* =====================================================
+   BOTTOM
+===================================================== */
+
+.bottom-text {
+    position: absolute;
+
+    bottom: 35px;
+    right: 45px;
+
+    display: flex;
+    gap: 15px;
+
+    font-size: 9px;
+    letter-spacing: 3px;
+
+    color: rgba(255,255,255,0.35);
+}
+
+
+/* =====================================================
+   GENERAL CONTENT
+===================================================== */
+
+.about-section,
+.placeholder-section {
+    min-height: 100vh;
+
+    padding:
+        140px
+        8vw
+        120px
+        250px;
+}
+
+
+/* =====================================================
+   ABOUT
+===================================================== */
+
+.about-header h2,
+.placeholder-section h2 {
+    font-size: clamp(55px, 8vw, 110px);
+
+    line-height: 0.85;
+
+    letter-spacing: -4px;
+
+    margin-bottom: 80px;
+}
+
+.about-header h2 span,
+.placeholder-section h2 span {
+    color: #ff3333;
+}
+
+
+/* =====================================================
+   PROFILE DASHBOARD
+===================================================== */
+
+.profile-dashboard {
+
+    display: grid;
+
+    grid-template-columns:
+        280px
+        1fr
+        280px;
+
+    gap: 35px;
+
+    max-width: 1200px;
+}
+
+
+/* =====================================================
+   PHOTO
+===================================================== */
+
+.profile-photo {
+
+    height: 350px;
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    background: rgba(255,255,255,0.025);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.profile-photo img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.photo-overlay {
+
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    padding: 15px;
+
+    display: flex;
+    justify-content: space-between;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,0,0,0.9)
+        );
+
+    font-size: 8px;
+    letter-spacing: 2px;
+}
+
+
+/* =====================================================
+   PROFILE INFO
+===================================================== */
+
+.profile-name .label,
+.data-row span {
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+    color: rgba(255,255,255,0.35);
+}
+
+.profile-name h3 {
+
+    font-size: 38px;
+
+    margin-top: 10px;
+}
+
+.status-box {
+
+    margin: 25px 0;
+
+    display: flex;
+
+    gap: 12px;
+
+    align-items: center;
+
+    padding: 15px;
+
+    border-left:
+        2px solid #ff3333;
+
+    background:
+        rgba(255,0,0,0.04);
+}
+
+.status-dot {
+
+    width: 8px;
+    height: 8px;
+
+    background: #ff3333;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 15px #ff3333;
+}
+
+.status-box small {
+
+    display: block;
+
+    font-size: 8px;
+
+    color: rgba(255,255,255,0.4);
+
+    letter-spacing: 2px;
+}
+
+.status-box strong {
+
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+}
+
+.bio {
+
+    color: rgba(255,255,255,0.55);
+
+    line-height: 1.8;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   DATA
+===================================================== */
+
+.profile-data {
+
+    border-left:
+        1px solid rgba(255,255,255,0.12);
+
+    padding-left: 25px;
+}
+
+.data-row {
+
+    padding: 18px 0;
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.08);
+}
+
+.data-row strong {
+
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   LEARNING
+===================================================== */
+
+.learning-panel {
+
+    margin-top: 100px;
+
+    display: grid;
+
+    grid-template-columns:
+        300px
+        1fr;
+
+    gap: 50px;
+
+    max-width: 1100px;
+}
+
+.learning-title h3 {
+
+    font-size: 45px;
+
+    line-height: 0.9;
+}
+
+.learning-title h3 span {
+
+    color: #ff3333;
+}
+
+.learning-list {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 10px;
+}
+
+.learning-list div {
+
+    padding: 18px;
+
+    border:
+        1px solid rgba(255,255,255,0.1);
+
+    background:
+        rgba(255,255,255,0.025);
+
+    display: flex;
+
+    gap: 15px;
+
+    transition:
+        transform 0.3s,
+        border 0.3s;
+}
+
+.learning-list div:hover {
+
+    transform: translateY(-4px);
+
+    border-color:
+        rgba(255,50,50,0.5);
+}
+
+.learning-list span {
+
+    color: #ff3333;
+
+    font-size: 9px;
+}
+
+.learning-list p {
+
+    font-size: 11px;
+
+    color:
+        rgba(255,255,255,0.65);
+}
+
+
+/* =====================================================
+   QUOTE
+===================================================== */
+
+.quote-panel {
+
+    margin-top: 100px;
+
+    max-width: 700px;
+
+    padding: 50px;
+
+    border-top:
+        1px solid rgba(255,255,255,0.15);
+}
+
+.quote-mark {
+
+    font-size: 70px;
+
+    color: #ff3333;
+}
+
+.quote-panel p {
+
+    font-size: 22px;
+
+    line-height: 1.6;
+
+    color:
+        rgba(255,255,255,0.75);
+}
+
+.quote-panel small {
+
+    display: block;
+
+    margin-top: 20px;
+
+    color:
+        rgba(255,255,255,0.3);
+
+    letter-spacing: 2px;
+}
+
+
+/* =====================================================
+   PLACEHOLDER SECTIONS
+===================================================== */
+
+.placeholder-section {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.placeholder-section h2 {
+
+    margin-bottom: 0;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+
+        position: fixed;
+
+        left: 20px;
+        top: 20px;
+
+        transform: none;
+
+        width: auto;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 25px;
+    }
+
+    .logo {
+        margin: 0;
+    }
+
+    nav {
+        flex-direction: row;
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 8px;
+    }
+
+    .line,
+    .side-text {
+        display: none;
+    }
+
+    .hero {
+        padding-left: 0;
+    }
+
+    .about-section,
+    .placeholder-section {
+        padding:
+            120px
+            30px
+            80px;
+    }
+
+    .profile-dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-data {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .learning-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .learning-list {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =====================================================
+   ACTIVE NAVIGATION
+===================================================== */
+
+section:target ~ * {
+    opacity: 1;
+}
+
+</style>
+</head>
+
+
+<body>
+
+<canvas id="scene"></canvas>
+
+<div class="red-glow"></div>
+<div class="grid"></div>
+
+
+<!-- =================================================
+     SIDEBAR
+================================================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">WRaith</div>
+
+    <nav>
+
+        <a href="#home">
+            01 HOME
+        </a>
+
+        <a href="#about">
+            02 ABOUT
+        </a>
+
+        <a href="#projects">
+            03 PROJECTS
+        </a>
+
+        <a href="#skills">
+            04 SKILLS
+        </a>
+
+        <a href="#contact">
+            05 CONTACT
+        </a>
+
+    </nav>
+
+    <div class="line"></div>
+
+    <p class="side-text">
+        EST. 2026
+    </p>
+
+</aside>
+
+
+<main>
+
+
+<!-- =================================================
+     HOME
+================================================= -->
+
+<section
+    class="hero"
+    id="home"
+>
+
+    <div class="hero-content">
+
+        <p class="eyebrow">
+            PORTFOLIO / 2026
+        </p>
+
+        <h1>
+            WRaith
+        </h1>
+
+        <p class="description">
+
+            Cybersecurity learner,
+            developer and creator
+            building immersive digital experiences.
+
+        </p>
+
+        <button
+            id="exploreBtn"
+            onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})"
+        >
+
+            EXPLORE
+
+        </button>
+
+    </div>
+
+
+    <div class="bottom-text">
+
+        <span>
+            SCROLL TO EXPLORE
+        </span>
+
+        <span>
+            ●
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     ABOUT
+================================================= -->
+
+<section
+    class="about-section"
+    id="about"
+>
+
+    <div class="about-header">
+
+        <p class="eyebrow">
+            02 / IDENTITY
+        </p>
+
+        <h2>
+            WHO<br>
+            <span>I AM</span>
+        </h2>
+
+    </div>
+
+
+    <div class="profile-dashboard">
+
+
+        <div class="profile-photo">
+
+            <img
+                src="./assets/suraj.jpg"
+                alt="Suraj Dahal"
+            >
+
+            <div class="photo-overlay">
+
+                <span>
+                    IDENTITY VERIFIED
+                </span>
+
+                <span>
+                    ● ONLINE
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="profile-info">
+
+            <div class="profile-name">
+
+                <span class="label">
+                    NAME
+                </span>
+
+                <h3>
+                    Suraj Dahal
+                </h3>
+
+            </div>
+
+
+            <div class="status-box">
+
+                <span class="status-dot"></span>
+
+                <div>
+
+                    <small>
+                        STATUS
+                    </small>
+
+                    <strong>
+                        LEARNING / BUILDING
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <p class="bio">
+
+                I'm a Computer Science student interested in
+                cybersecurity, programming, networking and
+                building things on the web.
+
+                <br><br>
+
+                I enjoy understanding how systems work,
+                experimenting with technology and continuously
+                expanding my skills across security and software.
+
+            </p>
+
+        </div>
+
+
+        <div class="profile-data">
+
+            <div class="data-row">
+
+                <span>
+                    DATE OF BIRTH
+                </span>
+
+                <strong>
+                    13 / 12 / 2007
+                </strong>
+
+            </div>
+
+
+            <div class="data-row">
+
+                <span>
+                    DEGREE
+                </span>
+
+                <strong>
+                    B.Sc. Computer Science
+                </strong>
+
+            </div>
+
+
+            <div class="data-row">
+
+                <span>
+                    CURRENT
+                </span>
+
+                <strong>
+                    1st Semester
+                </strong>
+
+            </div>
+
+
+            <div class="data-row">
+
+                <span>
+                    CORE
+                </span>
+
+                <strong>
+                    Computer Science
+                </strong>
+
+            </div>
+
+
+            <div class="data-row">
+
+                <span>
+                    FOCUS
+                </span>
+
+                <strong>
+                    Cybersecurity
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="learning-panel">
+
+        <div class="learning-title">
+
+            <p class="eyebrow">
+                CURRENT PROTOCOL
+            </p>
+
+            <h3>
+                WHAT I'M<br>
+                <span>LEARNING</span>
+            </h3>
+
+        </div>
+
+
+        <div class="learning-list">
+
+            <div>
+                <span>01</span>
+                <p>Cybersecurity Fundamentals</p>
+            </div>
+
+            <div>
+                <span>02</span>
+                <p>Networking & OSI Model</p>
+            </div>
+
+            <div>
+                <span>03</span>
+                <p>Linux & Ubuntu</p>
+            </div>
+
+            <div>
+                <span>04</span>
+                <p>Python & C Programming</p>
+            </div>
+
+            <div>
+                <span>05</span>
+                <p>Bash Scripting</p>
+            </div>
+
+            <div>
+                <span>06</span>
+                <p>AI Security</p>
+            </div>
+
+            <div>
+                <span>07</span>
+                <p>Web Development</p>
+            </div>
+
+            <div>
+                <span>08</span>
+                <p>3D & Animation</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="quote-panel">
+
+        <span class="quote-mark">
+            "
+        </span>
+
+        <p>
+
+            Learn how things work.
+            Build what you imagine.
+            Break nothing you don't own.
+            Keep learning.
+
+        </p>
+
+        <small>
+            — WRaith / Suraj Dahal
+        </small>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     PROJECTS
+================================================= -->
+
+<section
+    class="placeholder-section"
+    id="projects"
+>
+
+    <p class="eyebrow">
+        03 / PROJECTS
+    </p>
+
+    <h2>
+        PROJECTS<br>
+        <span>COMING SOON</span>
+    </h2>
+
+</section>
+
+
+<!-- =================================================
+     SKILLS
+================================================= -->
+
+<section
+    class="placeholder-section"
+    id="skills"
+>
+
+    <p class="eyebrow">
+        04 / SKILLS
+    </p>
+
+    <h2>
+        WHAT I<br>
+        <span>WORK WITH</span>
+    </h2>
+
+</section>
+
+
+<!-- =================================================
+     CONTACT
+================================================= -->
+
+<section
+    class="placeholder-section"
+    id="contact"
+>
+
+    <p class="eyebrow">
+        05 / CONTACT
+    </p>
+
+    <h2>
+        LET'S<br>
+        <span>CONNECT</span>
+    </h2>
+
+</section>
+
+
+</main>
+
+
+<!-- =================================================
+     THREE.JS
+================================================= -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script>
+
+/* =====================================================
+   THREE.JS SCENE
+===================================================== */
+
+const canvas =
+    document.getElementById("scene");
+
+const scene =
+    new THREE.Scene();
+
+
+const camera =
+    new THREE.PerspectiveCamera(
+        40,
+        window.innerWidth /
+        window.innerHeight,
+        0.1,
+        100
+    );
+
+
+camera.position.set(
+    0,
+    0.2,
+    8.5
+);
+
+
+/* =====================================================
+   RENDERER
+===================================================== */
+
+const renderer =
+    new THREE.WebGLRenderer({
+
+        canvas: canvas,
+
+        alpha: true,
+
+        antialias: true,
+
+        powerPreference:
+            "high-performance"
+
+    });
+
+
+renderer.setPixelRatio(
+    Math.min(
+        window.devicePixelRatio,
+        2
+    )
+);
+
+
+renderer.setSize(
+    window.innerWidth,
+    window.innerHeight
+);
+
+
+renderer.setClearColor(
+    0x000000,
+    0
+);
+
+
+/* =====================================================
+   LIGHTING
+===================================================== */
+
+scene.add(
+    new THREE.AmbientLight(
+        0xffffff,
+        1.1
+    )
+);
+
+
+const redLight =
+    new THREE.PointLight(
+        0xff3b3b,
+        5.5,
+        25,
+        2
+    );
+
+redLight.position.set(
+    2.5,
+    1.8,
+    5.2
+);
+
+scene.add(redLight);
+
+
+const blueLight =
+    new THREE.PointLight(
+        0x7cc6ff,
+        3.2,
+        22,
+        2
+    );
+
+blueLight.position.set(
+    -4,
+    1.5,
+    3.5
+);
+
+scene.add(blueLight);
+
+
+/* =====================================================
+   RING CREATOR
+===================================================== */
+
+function createRing(
+    color,
+    radius,
+    tube,
+    x,
+    y
+) {
+
+    const group =
+        new THREE.Group();
+
+
+    const ring =
+        new THREE.Mesh(
+
+            new THREE.TorusGeometry(
+                radius,
+                tube,
+                20,
+                120
+            ),
+
+            new THREE.MeshPhysicalMaterial({
+
+                color: color,
+
+                emissive: color,
+
+                emissiveIntensity:
+                    0.25,
+
+                transparent: true,
+
+                opacity: 0.65,
+
+                roughness: 0.2,
+
+                metalness: 0.4
+
+            })
+
+        );
+
+
+    ring.rotation.x = x;
+    ring.rotation.y = y;
+
+
+    group.add(ring);
+
+
+    const glow =
+        new THREE.Mesh(
+
+            new THREE.TorusGeometry(
+                radius * 0.82,
+                tube * 0.5,
+                18,
+                100
+            ),
+
+            new THREE.MeshBasicMaterial({
+
+                color: 0xffffff,
+
+                transparent: true,
+
+                opacity: 0.18
+
+            })
+
+        );
+
+
+    glow.rotation.x = x;
+
+    glow.rotation.y =
+        y + 0.7;
+
+
+    group.add(glow);
+
+
+    return group;
+}
+
+
+/* =====================================================
+   ORBITS
+===================================================== */
+
+const ringA =
+    createRing(
+        0xffffff,
+        2.2,
+        0.03,
+        1.1,
+        0.4
+    );
+
+ringA.position.set(
+    -0.8,
+    0.5,
+    -1.1
+);
+
+scene.add(ringA);
+
+
+const ringB =
+    createRing(
+        0xd24242,
+        1.7,
+        0.026,
+        0.8,
+        1.7
+    );
+
+ringB.position.set(
+    1.4,
+    -0.3,
+    -0.8
+);
+
+scene.add(ringB);
+
+
+const ringC =
+    createRing(
+        0xe5e5e5,
+        2.8,
+        0.02,
+        1.8,
+        0.8
+    );
+
+ringC.position.set(
+    0.4,
+    0.8,
+    -1.5
+);
+
+scene.add(ringC);
+
+
+/* =====================================================
+   PARTICLES
+===================================================== */
+
+const particleGeometry =
+    new THREE.BufferGeometry();
+
+const particleCount = 220;
+
+const positions =
+    new Float32Array(
+        particleCount * 3
+    );
+
+
+for (
+    let i = 0;
+    i < particleCount * 3;
+    i += 3
+) {
+
+    positions[i] =
+        (Math.random() - 0.5) * 12;
+
+    positions[i + 1] =
+        (Math.random() - 0.5) * 8;
+
+    positions[i + 2] =
+        (Math.random() - 0.5) * 6;
+
+}
+
+
+particleGeometry.setAttribute(
+    "position",
+
+    new THREE.BufferAttribute(
+        positions,
+        3
+    )
+);
+
+
+const particles =
+    new THREE.Points(
+
+        particleGeometry,
+
+        new THREE.PointsMaterial({
+
+            color: 0xdedede,
+
+            size: 0.028,
+
+            transparent: true,
+
+            opacity: 0.7
+
+        })
+
+    );
+
+
+scene.add(particles);
+
+
+/* =====================================================
+   MOUSE
+===================================================== */
+
+let mouseX = 0;
+let mouseY = 0;
+
+
+window.addEventListener(
+    "pointermove",
+    function(event) {
+
+        mouseX =
+            event.clientX /
+            window.innerWidth *
+            2 - 1;
+
+        mouseY =
+            event.clientY /
+            window.innerHeight *
+            2 - 1;
+
+    }
+);
+
+
+/* =====================================================
+   ANIMATION
+===================================================== */
+
+const clock =
+    new THREE.Clock();
+
+
+function animate() {
+
+    requestAnimationFrame(
+        animate
+    );
+
+
+    const time =
+        clock.getElapsedTime();
+
+
+    ringA.rotation.x =
+        time * 0.45;
+
+    ringA.rotation.z =
+        time * 0.25;
+
+
+    ringB.rotation.y =
+        time * 0.5;
+
+    ringB.rotation.x =
+        time * 0.28 + 0.6;
+
+
+    ringC.rotation.x =
+        time * 0.22;
+
+    ringC.rotation.y =
+        -time * 0.35;
+
+
+    camera.position.x +=
+        (
+            mouseX * 0.7 -
+            camera.position.x
+        ) * 0.025;
+
+
+    camera.position.y +=
+        (
+            -mouseY * 0.35 -
+            camera.position.y
+        ) * 0.02;
+
+
+    particles.rotation.y =
+        time * 0.02;
+
+    particles.rotation.x =
+        time * 0.01;
+
+
+    renderer.render(
+        scene,
+        camera
+    );
+
+}
+
+
+animate();
+
+
+/* =====================================================
+   RESIZE
+===================================================== */
+
+window.addEventListener(
+    "resize",
+    function() {
+
+        camera.aspect =
+            window.innerWidth /
+            window.innerHeight;
+
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(
+            window.innerWidth,
+            window.innerHeight
+        );
+
+    }
+);
+
+</script>
+
+</body>
+</html>
