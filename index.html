@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,15 +30,9 @@ body {
     overflow-x: hidden;
 }
 
-
-/* =====================================================
-   MAIN
-===================================================== */
-
 main {
     width: 100%;
 }
-
 
 /* =====================================================
    3D CANVAS
@@ -52,7 +47,6 @@ main {
     pointer-events: none;
 }
 
-
 /* =====================================================
    RED ATMOSPHERE
 ===================================================== */
@@ -62,24 +56,18 @@ main {
     width: 700px;
     height: 700px;
     border-radius: 50%;
-
     background:
         radial-gradient(
             circle,
             rgba(150, 0, 0, 0.25),
             transparent 70%
         );
-
     top: 50%;
     left: 50%;
-
-    transform:
-        translate(-50%, -50%);
-
+    transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 0;
 }
-
 
 /* =====================================================
    GRID
@@ -88,7 +76,6 @@ main {
 .grid {
     position: fixed;
     inset: 0;
-
     background-image:
         linear-gradient(
             rgba(255,255,255,0.025) 1px,
@@ -99,20 +86,16 @@ main {
             rgba(255,255,255,0.025) 1px,
             transparent 1px
         );
-
     background-size: 60px 60px;
-
     mask-image:
         linear-gradient(
             to bottom,
             black,
             transparent 90%
         );
-
     pointer-events: none;
     z-index: 1;
 }
-
 
 /* =====================================================
    SIDEBAR
@@ -120,14 +103,10 @@ main {
 
 .sidebar {
     position: fixed;
-
     left: 35px;
     top: 50%;
-
     transform: translateY(-50%);
-
     width: 180px;
-
     z-index: 20;
 }
 
@@ -147,13 +126,9 @@ nav {
 nav a {
     color: rgba(255,255,255,0.42);
     text-decoration: none;
-
     font-size: 11px;
     letter-spacing: 2px;
-
-    transition:
-        color 0.3s,
-        transform 0.3s;
+    transition: color 0.3s, transform 0.3s;
 }
 
 nav a:hover {
@@ -168,21 +143,16 @@ nav a.active {
 .line {
     width: 100%;
     height: 1px;
-
     background: rgba(255,255,255,0.12);
-
     margin-top: 40px;
 }
 
 .side-text {
     margin-top: 15px;
-
     font-size: 9px;
     letter-spacing: 3px;
-
     color: rgba(255,255,255,0.3);
 }
-
 
 /* =====================================================
    SECTIONS
@@ -193,86 +163,71 @@ section {
     z-index: 5;
 }
 
-
 /* =====================================================
    HOME
 ===================================================== */
 
 .hero {
     min-height: 100vh;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     text-align: center;
-
     padding-left: 180px;
 }
 
 .hero-content {
     position: relative;
     z-index: 10;
-
     max-width: 700px;
 }
 
 .eyebrow {
     color: #ff3c3c;
-
     font-size: 10px;
     letter-spacing: 4px;
-
     margin-bottom: 25px;
 }
 
 .hero h1 {
     font-size: clamp(80px, 15vw, 190px);
-
     line-height: 0.8;
-
     letter-spacing: -8px;
-
     font-weight: 900;
-
     text-shadow:
         0 0 50px rgba(255,0,0,0.15);
 }
 
 .description {
     max-width: 480px;
-
     margin: 35px auto;
-
     color: rgba(255,255,255,0.55);
-
     line-height: 1.8;
-
     font-size: 14px;
 }
 
-
 /* =====================================================
-   EXPLORE
+   HERO BUTTONS
 ===================================================== */
 
-#exploreBtn {
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+#exploreBtn,
+#launchWraithBtn {
     position: relative;
-
     border: 1px solid rgba(255,255,255,0.35);
-
     background: rgba(0,0,0,0.35);
-
     color: white;
-
-    padding: 16px 40px;
-
+    padding: 16px 32px;
     cursor: pointer;
-
     font-size: 10px;
-
     letter-spacing: 4px;
-
     transition:
         background 0.3s,
         border 0.3s,
@@ -282,10 +237,22 @@ section {
 #exploreBtn:hover {
     background: #a00000;
     border-color: #ff3333;
-
     transform: translateY(-3px);
 }
 
+#launchWraithBtn {
+    border-color: rgba(255,60,60,0.55);
+    box-shadow:
+        0 0 25px rgba(255,0,0,0.08);
+}
+
+#launchWraithBtn:hover {
+    background: rgba(160,0,0,0.75);
+    border-color: #ff3333;
+    transform: translateY(-3px);
+    box-shadow:
+        0 0 35px rgba(255,0,0,0.2);
+}
 
 /* =====================================================
    BOTTOM
@@ -293,19 +260,14 @@ section {
 
 .bottom-text {
     position: absolute;
-
     bottom: 35px;
     right: 45px;
-
     display: flex;
     gap: 15px;
-
     font-size: 9px;
     letter-spacing: 3px;
-
     color: rgba(255,255,255,0.35);
 }
-
 
 /* =====================================================
    GENERAL CONTENT
@@ -314,14 +276,12 @@ section {
 .about-section,
 .placeholder-section {
     min-height: 100vh;
-
     padding:
         140px
         8vw
         120px
         250px;
 }
-
 
 /* =====================================================
    ABOUT
@@ -330,11 +290,8 @@ section {
 .about-header h2,
 .placeholder-section h2 {
     font-size: clamp(55px, 8vw, 110px);
-
     line-height: 0.85;
-
     letter-spacing: -4px;
-
     margin-bottom: 80px;
 }
 
@@ -343,76 +300,55 @@ section {
     color: #ff3333;
 }
 
-
 /* =====================================================
    PROFILE DASHBOARD
 ===================================================== */
 
 .profile-dashboard {
-
     display: grid;
-
     grid-template-columns:
         280px
         1fr
         280px;
-
     gap: 35px;
-
     max-width: 1200px;
 }
-
 
 /* =====================================================
    PHOTO
 ===================================================== */
 
 .profile-photo {
-
     height: 350px;
-
     border: 1px solid rgba(255,255,255,0.15);
-
     background: rgba(255,255,255,0.025);
-
     position: relative;
-
     overflow: hidden;
 }
 
 .profile-photo img {
-
     width: 100%;
     height: 100%;
-
     object-fit: cover;
-
     display: block;
 }
 
 .photo-overlay {
-
     position: absolute;
-
     bottom: 0;
     left: 0;
     right: 0;
-
     padding: 15px;
-
     display: flex;
     justify-content: space-between;
-
     background:
         linear-gradient(
             transparent,
             rgba(0,0,0,0.9)
         );
-
     font-size: 8px;
     letter-spacing: 2px;
 }
-
 
 /* =====================================================
    PROFILE INFO
@@ -420,260 +356,170 @@ section {
 
 .profile-name .label,
 .data-row span {
-
     font-size: 8px;
-
     letter-spacing: 3px;
-
     color: rgba(255,255,255,0.35);
 }
 
 .profile-name h3 {
-
     font-size: 38px;
-
     margin-top: 10px;
 }
 
 .status-box {
-
     margin: 25px 0;
-
     display: flex;
-
     gap: 12px;
-
     align-items: center;
-
     padding: 15px;
-
-    border-left:
-        2px solid #ff3333;
-
-    background:
-        rgba(255,0,0,0.04);
+    border-left: 2px solid #ff3333;
+    background: rgba(255,0,0,0.04);
 }
 
 .status-dot {
-
     width: 8px;
     height: 8px;
-
     background: #ff3333;
-
     border-radius: 50%;
-
-    box-shadow:
-        0 0 15px #ff3333;
+    box-shadow: 0 0 15px #ff3333;
 }
 
 .status-box small {
-
     display: block;
-
     font-size: 8px;
-
     color: rgba(255,255,255,0.4);
-
     letter-spacing: 2px;
 }
 
 .status-box strong {
-
     display: block;
-
     margin-top: 5px;
-
     font-size: 11px;
-
     letter-spacing: 1px;
 }
 
 .bio {
-
     color: rgba(255,255,255,0.55);
-
     line-height: 1.8;
-
     font-size: 13px;
 }
-
 
 /* =====================================================
    DATA
 ===================================================== */
 
 .profile-data {
-
-    border-left:
-        1px solid rgba(255,255,255,0.12);
-
+    border-left: 1px solid rgba(255,255,255,0.12);
     padding-left: 25px;
 }
 
 .data-row {
-
     padding: 18px 0;
-
-    border-bottom:
-        1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 .data-row strong {
-
     display: block;
-
     margin-top: 8px;
-
     font-size: 12px;
 }
-
 
 /* =====================================================
    LEARNING
 ===================================================== */
 
 .learning-panel {
-
     margin-top: 100px;
-
     display: grid;
-
     grid-template-columns:
         300px
         1fr;
-
     gap: 50px;
-
     max-width: 1100px;
 }
 
 .learning-title h3 {
-
     font-size: 45px;
-
     line-height: 0.9;
 }
 
 .learning-title h3 span {
-
     color: #ff3333;
 }
 
 .learning-list {
-
     display: grid;
-
     grid-template-columns:
         repeat(2, 1fr);
-
     gap: 10px;
 }
 
 .learning-list div {
-
     padding: 18px;
-
-    border:
-        1px solid rgba(255,255,255,0.1);
-
-    background:
-        rgba(255,255,255,0.025);
-
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.025);
     display: flex;
-
     gap: 15px;
-
     transition:
         transform 0.3s,
         border 0.3s;
 }
 
 .learning-list div:hover {
-
     transform: translateY(-4px);
-
-    border-color:
-        rgba(255,50,50,0.5);
+    border-color: rgba(255,50,50,0.5);
 }
 
 .learning-list span {
-
     color: #ff3333;
-
     font-size: 9px;
 }
 
 .learning-list p {
-
     font-size: 11px;
-
-    color:
-        rgba(255,255,255,0.65);
+    color: rgba(255,255,255,0.65);
 }
-
 
 /* =====================================================
    QUOTE
 ===================================================== */
 
 .quote-panel {
-
     margin-top: 100px;
-
     max-width: 700px;
-
     padding: 50px;
-
-    border-top:
-        1px solid rgba(255,255,255,0.15);
+    border-top: 1px solid rgba(255,255,255,0.15);
 }
 
 .quote-mark {
-
     font-size: 70px;
-
     color: #ff3333;
 }
 
 .quote-panel p {
-
     font-size: 22px;
-
     line-height: 1.6;
-
-    color:
-        rgba(255,255,255,0.75);
+    color: rgba(255,255,255,0.75);
 }
 
 .quote-panel small {
-
     display: block;
-
     margin-top: 20px;
-
-    color:
-        rgba(255,255,255,0.3);
-
+    color: rgba(255,255,255,0.3);
     letter-spacing: 2px;
 }
-
 
 /* =====================================================
    PLACEHOLDER SECTIONS
 ===================================================== */
 
 .placeholder-section {
-
     display: flex;
-
     flex-direction: column;
-
     justify-content: center;
 }
 
 .placeholder-section h2 {
-
     margin-bottom: 0;
 }
 
@@ -716,6 +562,336 @@ section {
     color: #ffffff;
 }
 
+/* =====================================================
+   WRAITH AI OVERLAY
+===================================================== */
+
+#wraithOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(25,0,0,0.35),
+            rgba(0,0,0,0.97) 65%
+        );
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        opacity 0.7s ease,
+        visibility 0.7s ease;
+}
+
+#wraithOverlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* =====================================================
+   AI GRID
+===================================================== */
+
+#wraithOverlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        );
+    background-size: 50px 50px;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* =====================================================
+   AI CONTENT
+===================================================== */
+
+.wraith-interface {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+/* =====================================================
+   TOP BAR
+===================================================== */
+
+.wraith-top {
+    position: absolute;
+    top: 30px;
+    left: 35px;
+    right: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wraith-title {
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: rgba(255,255,255,0.7);
+}
+
+.wraith-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.4);
+}
+
+.wraith-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ff3333;
+    box-shadow: 0 0 12px #ff3333;
+    animation: statusPulse 1.5s infinite;
+}
+
+@keyframes statusPulse {
+
+    0%,100% {
+        opacity: 0.4;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
+}
+
+/* =====================================================
+   AI CORE
+===================================================== */
+
+.wraith-core {
+    position: relative;
+    width: min(430px, 70vw);
+    height: min(430px, 70vw);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wraith-core::before {
+    content: "";
+    position: absolute;
+    width: 55%;
+    height: 55%;
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,20,20,0.25),
+            rgba(0,100,255,0.08),
+            transparent 70%
+        );
+    filter: blur(35px);
+    transition: transform 0.3s ease;
+}
+
+/* =====================================================
+   PARTICLE CANVAS
+===================================================== */
+
+#wraithParticles {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* =====================================================
+   CORE CENTER
+===================================================== */
+
+.core-center {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.2);
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,0.08),
+            rgba(0,0,0,0.6)
+        );
+    box-shadow:
+        0 0 35px rgba(255,0,0,0.15),
+        inset 0 0 25px rgba(255,255,255,0.05);
+    z-index: 5;
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.core-center.listening {
+    box-shadow:
+        0 0 60px rgba(255,0,0,0.4),
+        0 0 100px rgba(0,80,255,0.2),
+        inset 0 0 30px rgba(255,255,255,0.1);
+}
+
+.core-symbol {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.75);
+}
+
+/* =====================================================
+   RESPONSE
+===================================================== */
+
+.wraith-response {
+    position: absolute;
+    bottom: 150px;
+    width: min(700px, 85vw);
+    text-align: center;
+    pointer-events: none;
+}
+
+.response-label {
+    font-size: 8px;
+    letter-spacing: 4px;
+    color: rgba(255,60,60,0.7);
+    margin-bottom: 12px;
+}
+
+#aiResponse {
+    min-height: 24px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.75);
+    text-shadow:
+        0 0 20px rgba(255,0,0,0.12);
+    transition: opacity 0.3s ease;
+}
+
+/* =====================================================
+   COMMAND AREA
+===================================================== */
+
+.wraith-command {
+    position: absolute;
+    bottom: 50px;
+    width: min(760px, 90vw);
+    display: flex;
+    gap: 10px;
+}
+
+#wraithInput {
+    flex: 1;
+    height: 52px;
+    padding: 0 20px;
+    border: 1px solid rgba(255,255,255,0.16);
+    outline: none;
+    background: rgba(0,0,0,0.65);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition:
+        border 0.3s,
+        box-shadow 0.3s;
+}
+
+#wraithInput:focus {
+    border-color: rgba(255,50,50,0.6);
+    box-shadow:
+        0 0 25px rgba(255,0,0,0.08);
+}
+
+#wraithInput::placeholder {
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 2px;
+}
+
+.wraith-action {
+    height: 52px;
+    padding: 0 22px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.65);
+    color: white;
+    font-size: 9px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition:
+        background 0.3s,
+        border 0.3s,
+        transform 0.2s;
+}
+
+.wraith-action:hover {
+    background: #8d0000;
+    border-color: #ff3333;
+}
+
+.wraith-action:active {
+    transform: scale(0.96);
+}
+
+#wraithVoice.listening {
+    background: #a00000;
+    border-color: #ff3333;
+    box-shadow:
+        0 0 25px rgba(255,0,0,0.25);
+}
+
+/* =====================================================
+   EXIT
+===================================================== */
+
+#wraithExit {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.4);
+    color: rgba(255,255,255,0.7);
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+        background 0.3s,
+        color 0.3s,
+        border 0.3s,
+        transform 0.2s;
+}
+
+#wraithExit:hover {
+    background: #8d0000;
+    border-color: #ff3333;
+    color: white;
+    transform: rotate(90deg);
+}
 
 /* =====================================================
    MOBILE
@@ -724,20 +900,13 @@ section {
 @media (max-width: 900px) {
 
     .sidebar {
-
         position: fixed;
-
         left: 20px;
         top: 20px;
-
         transform: none;
-
         width: auto;
-
         display: flex;
-
         align-items: center;
-
         gap: 25px;
     }
 
@@ -788,26 +957,93 @@ section {
         grid-template-columns: 1fr;
     }
 
+    .wraith-command {
+        flex-wrap: wrap;
+    }
+
+    #wraithInput {
+        width: 100%;
+        flex-basis: 100%;
+    }
+
+    .wraith-action {
+        flex: 1;
+    }
+
+    .wraith-response {
+        bottom: 185px;
+    }
 }
 
+@media (max-width: 600px) {
+
+    .hero h1 {
+        letter-spacing: -5px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    #exploreBtn,
+    #launchWraithBtn {
+        width: 230px;
+    }
+
+    .wraith-top {
+        left: 20px;
+        right: 80px;
+        top: 22px;
+    }
+
+    .wraith-core {
+        width: 320px;
+        height: 320px;
+    }
+
+    .core-center {
+        width: 70px;
+        height: 70px;
+    }
+
+    .wraith-response {
+        bottom: 180px;
+    }
+
+    #aiResponse {
+        font-size: 12px;
+    }
+
+    .wraith-command {
+        bottom: 25px;
+    }
+
+    .wraith-action {
+        padding: 0 12px;
+    }
+}
 
 /* =====================================================
-   ACTIVE NAVIGATION
+   BODY LOCK
 ===================================================== */
 
-section:target ~ * {
-    opacity: 1;
+body.wraith-open {
+    overflow: hidden;
 }
 
 </style>
 </head>
 
-
 <body>
+
+<!-- =================================================
+     ORIGINAL PORTFOLIO BACKGROUND
+================================================= -->
 
 <canvas id="scene"></canvas>
 
 <div class="red-glow"></div>
+
 <div class="grid"></div>
 
 
@@ -817,7 +1053,9 @@ section:target ~ * {
 
 <aside class="sidebar">
 
-    <div class="logo">WRaith</div>
+    <div class="logo">
+        WRaith
+    </div>
 
     <nav>
 
@@ -854,7 +1092,6 @@ section:target ~ * {
 
 <main>
 
-
 <!-- =================================================
      HOME
 ================================================= -->
@@ -882,17 +1119,19 @@ section:target ~ * {
 
         </p>
 
-        <button
-            id="exploreBtn"
-            onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})"
-        >
+        <div class="hero-buttons">
 
-            EXPLORE
+            <button id="exploreBtn">
+                EXPLORE
+            </button>
 
-        </button>
+            <button id="launchWraithBtn">
+                LAUNCH WRAITH
+            </button>
+
+        </div>
 
     </div>
-
 
     <div class="bottom-text">
 
@@ -938,7 +1177,7 @@ section:target ~ * {
         <div class="profile-photo">
 
             <img
-                src="./assets/suraj.jpg"
+                src="./assets/suraj-profile.png"
                 alt="Suraj Dahal"
             >
 
@@ -1247,8 +1486,111 @@ section:target ~ * {
 
 </section>
 
-
 </main>
+
+
+<!-- =================================================
+     WRAITH AI OVERLAY
+================================================= -->
+
+<div id="wraithOverlay">
+
+    <div class="wraith-interface">
+
+
+        <!-- TOP -->
+
+        <div class="wraith-top">
+
+            <div class="wraith-title">
+                WRAITH AI
+            </div>
+
+            <div class="wraith-status">
+
+                <span class="wraith-status-dot"></span>
+
+                <span id="wraithStatus">
+                    STANDBY
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- CORE -->
+
+        <div class="wraith-core">
+
+            <canvas id="wraithParticles"></canvas>
+
+            <div
+                class="core-center"
+                id="coreCenter"
+            >
+
+                <span class="core-symbol">
+                    CORE
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- RESPONSE -->
+
+        <div class="wraith-response">
+
+            <div class="response-label">
+                WRAITH
+            </div>
+
+            <div id="aiResponse">
+                Ready when you are.
+            </div>
+
+        </div>
+
+
+        <!-- COMMAND -->
+
+        <div class="wraith-command">
+
+            <input
+                id="wraithInput"
+                type="text"
+                autocomplete="off"
+                placeholder="TYPE A COMMAND..."
+            >
+
+            <button
+                class="wraith-action"
+                id="wraithVoice"
+            >
+                VOICE
+            </button>
+
+            <button
+                class="wraith-action"
+                id="wraithSend"
+            >
+                SEND
+            </button>
+
+        </div>
+
+
+        <!-- EXIT -->
+
+        <button id="wraithExit">
+            ×
+        </button>
+
+    </div>
+
+</div>
 
 
 <!-- =================================================
@@ -1257,10 +1599,11 @@ section:target ~ * {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
+
 <script>
 
 /* =====================================================
-   THREE.JS SCENE
+   ORIGINAL THREE.JS PORTFOLIO
 ===================================================== */
 
 const canvas =
@@ -1346,11 +1689,13 @@ const redLight =
         2
     );
 
+
 redLight.position.set(
     2.5,
     1.8,
     5.2
 );
+
 
 scene.add(redLight);
 
@@ -1363,11 +1708,13 @@ const blueLight =
         2
     );
 
+
 blueLight.position.set(
     -4,
     1.5,
     3.5
 );
+
 
 scene.add(blueLight);
 
@@ -1421,8 +1768,8 @@ function createRing(
 
 
     ring.rotation.x = x;
-    ring.rotation.y = y;
 
+    ring.rotation.y = y;
 
     group.add(ring);
 
@@ -1476,11 +1823,13 @@ const ringA =
         0.4
     );
 
+
 ringA.position.set(
     -0.8,
     0.5,
     -1.1
 );
+
 
 scene.add(ringA);
 
@@ -1494,11 +1843,13 @@ const ringB =
         1.7
     );
 
+
 ringB.position.set(
     1.4,
     -0.3,
     -0.8
 );
+
 
 scene.add(ringB);
 
@@ -1512,11 +1863,13 @@ const ringC =
         0.8
     );
 
+
 ringC.position.set(
     0.4,
     0.8,
     -1.5
 );
+
 
 scene.add(ringC);
 
@@ -1528,7 +1881,9 @@ scene.add(ringC);
 const particleGeometry =
     new THREE.BufferGeometry();
 
+
 const particleCount = 220;
+
 
 const positions =
     new Float32Array(
@@ -1556,7 +1911,6 @@ for (
 
 particleGeometry.setAttribute(
     "position",
-
     new THREE.BufferAttribute(
         positions,
         3
@@ -1592,6 +1946,7 @@ scene.add(particles);
 ===================================================== */
 
 let mouseX = 0;
+
 let mouseY = 0;
 
 
@@ -1699,9 +2054,1348 @@ window.addEventListener(
 
         camera.updateProjectionMatrix();
 
+
         renderer.setSize(
             window.innerWidth,
             window.innerHeight
+        );
+
+    }
+);
+
+
+/* =====================================================
+   EXPLORE
+===================================================== */
+
+document
+    .getElementById("exploreBtn")
+    .addEventListener(
+        "click",
+        function() {
+
+            document
+                .getElementById("about")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+    );
+
+
+/* =====================================================
+   WRAITH AI
+===================================================== */
+
+const wraithOverlay =
+    document.getElementById(
+        "wraithOverlay"
+    );
+
+
+const launchButton =
+    document.getElementById(
+        "launchWraithBtn"
+    );
+
+
+const exitButton =
+    document.getElementById(
+        "wraithExit"
+    );
+
+
+const input =
+    document.getElementById(
+        "wraithInput"
+    );
+
+
+const sendButton =
+    document.getElementById(
+        "wraithSend"
+    );
+
+
+const voiceButton =
+    document.getElementById(
+        "wraithVoice"
+    );
+
+
+const response =
+    document.getElementById(
+        "aiResponse"
+    );
+
+
+const statusText =
+    document.getElementById(
+        "wraithStatus"
+    );
+
+
+const coreCenter =
+    document.getElementById(
+        "coreCenter"
+    );
+
+
+/* =====================================================
+   OPEN WRAITH
+===================================================== */
+
+function openWraith() {
+
+    wraithOverlay.classList.add(
+        "active"
+    );
+
+
+    document.body.classList.add(
+        "wraith-open"
+    );
+
+
+    statusText.textContent =
+        "ONLINE";
+
+
+    targetEnergy = 0.35;
+
+
+    setTimeout(
+        () => input.focus(),
+        500
+    );
+
+}
+
+
+/* =====================================================
+   CLOSE WRAITH
+===================================================== */
+
+function closeWraith() {
+
+    wraithOverlay.classList.remove(
+        "active"
+    );
+
+
+    document.body.classList.remove(
+        "wraith-open"
+    );
+
+
+    stopListening();
+
+}
+
+
+launchButton.addEventListener(
+    "click",
+    openWraith
+);
+
+
+exitButton.addEventListener(
+    "click",
+    closeWraith
+);
+
+
+/* =====================================================
+   WRAITH RESPONSE DISPLAY
+===================================================== */
+
+function speakResponse(text) {
+
+    response.style.opacity = "0";
+
+
+    setTimeout(
+        () => {
+
+            response.textContent =
+                text;
+
+            response.style.opacity =
+                "1";
+
+        },
+        150
+    );
+
+}
+
+
+/* =====================================================
+   NAVIGATION HELPER
+===================================================== */
+
+function navigateToSection(
+    sectionId,
+    message
+) {
+
+    speakResponse(message);
+
+
+    closeWraith();
+
+
+    setTimeout(
+        () => {
+
+            const section =
+                document.getElementById(
+                    sectionId
+                );
+
+
+            if (section) {
+
+                section.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }
+
+        },
+        400
+    );
+
+}
+
+
+/* =====================================================
+   WRAITH → PYTHON BACKEND
+===================================================== */
+
+async function processCommand(command) {
+
+    const text =
+        command.trim();
+
+
+    if (!text) {
+        return;
+    }
+
+
+    input.value = "";
+
+
+    /*
+       First handle navigation commands locally.
+       This keeps the portfolio navigation instant.
+    */
+
+    const lowerText =
+        text.toLowerCase();
+
+
+    /* HOME */
+
+    if (
+        lowerText === "home" ||
+        lowerText.includes("go home") ||
+        lowerText.includes("open home") ||
+        lowerText.includes("show home")
+    ) {
+
+        navigateToSection(
+            "home",
+            "Returning to the home interface."
+        );
+
+        return;
+    }
+
+
+    /* ABOUT */
+
+    if (
+        lowerText === "about" ||
+        lowerText.includes("open about") ||
+        lowerText.includes("show about")
+    ) {
+
+        navigateToSection(
+            "about",
+            "Opening identity profile."
+        );
+
+        return;
+    }
+
+
+    /* PROJECTS */
+
+    if (
+        lowerText === "projects" ||
+        lowerText.includes("open projects") ||
+        lowerText.includes("show projects")
+    ) {
+
+        navigateToSection(
+            "projects",
+            "Opening project interface."
+        );
+
+        return;
+    }
+
+
+    /* SKILLS */
+
+    if (
+        lowerText === "skills" ||
+        lowerText.includes("open skills") ||
+        lowerText.includes("show skills")
+    ) {
+
+        navigateToSection(
+            "skills",
+            "Opening skills interface."
+        );
+
+        return;
+    }
+
+
+    /* CONTACT */
+
+    if (
+        lowerText === "contact" ||
+        lowerText.includes("open contact") ||
+        lowerText.includes("show contact")
+    ) {
+
+        navigateToSection(
+            "contact",
+            "Opening connection interface."
+        );
+
+        return;
+    }
+
+
+    /* EXIT */
+
+    if (
+        lowerText === "exit" ||
+        lowerText === "close" ||
+        lowerText === "quit" ||
+        lowerText.includes("close wraith") ||
+        lowerText.includes("exit wraith")
+    ) {
+
+        speakResponse(
+            "Closing Wraith interface."
+        );
+
+
+        setTimeout(
+            closeWraith,
+            500
+        );
+
+
+        return;
+    }
+
+
+    /*
+       Everything else goes to Python.
+    */
+
+    speakResponse(
+        "Processing command..."
+    );
+
+
+    statusText.textContent =
+        "THINKING";
+
+
+    targetEnergy = 0.8;
+
+
+    try {
+
+        const serverResponse =
+            await fetch(
+                "http://127.0.0.1:8000/command",
+                {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        command: text
+                    })
+
+                }
+            );
+
+
+        if (!serverResponse.ok) {
+
+            throw new Error(
+                "Wraith backend returned an error."
+            );
+
+        }
+
+
+        const data =
+            await serverResponse.json();
+
+
+        /*
+           Python response
+        */
+
+        speakResponse(
+            data.response ||
+            "I received your command."
+        );
+
+
+        /*
+           Python state
+        */
+
+        if (
+            data.state ===
+            "thinking"
+        ) {
+
+            statusText.textContent =
+                "THINKING";
+
+            targetEnergy =
+                0.65;
+
+        }
+
+        else if (
+            data.state ===
+            "speaking"
+        ) {
+
+            statusText.textContent =
+                "RESPONDING";
+
+            targetEnergy =
+                0.9;
+
+        }
+
+        else if (
+            data.state ===
+            "ready"
+        ) {
+
+            statusText.textContent =
+                "ONLINE";
+
+            targetEnergy =
+                0.35;
+
+        }
+
+        else if (
+            data.state ===
+            "shutdown"
+        ) {
+
+            statusText.textContent =
+                "STANDBY";
+
+            targetEnergy = 0;
+
+
+            setTimeout(
+                closeWraith,
+                900
+            );
+
+        }
+
+        else {
+
+            statusText.textContent =
+                "ONLINE";
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "WRAITH BACKEND ERROR:",
+            error
+        );
+
+
+        statusText.textContent =
+            "OFFLINE";
+
+
+        targetEnergy =
+            0.2;
+
+
+        speakResponse(
+            "I can't reach my Python core. Make sure the WRAITH backend is running."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   SEND
+===================================================== */
+
+sendButton.addEventListener(
+    "click",
+    function() {
+
+        processCommand(
+            input.value
+        );
+
+    }
+);
+
+
+/* =====================================================
+   ENTER
+===================================================== */
+
+input.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            processCommand(
+                input.value
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   WRAITH PARTICLE CORE
+===================================================== */
+
+const particleCanvas =
+    document.getElementById(
+        "wraithParticles"
+    );
+
+
+const particleContext =
+    particleCanvas.getContext(
+        "2d"
+    );
+
+
+let coreParticles = [];
+
+let coreWidth = 0;
+
+let coreHeight = 0;
+
+let coreEnergy = 0;
+
+let targetEnergy = 0;
+
+
+/* =====================================================
+   CORE RESIZE
+===================================================== */
+
+function resizeCore() {
+
+    const rect =
+        particleCanvas.getBoundingClientRect();
+
+
+    const dpr =
+        Math.min(
+            window.devicePixelRatio || 1,
+            2
+        );
+
+
+    coreWidth =
+        rect.width;
+
+    coreHeight =
+        rect.height;
+
+
+    particleCanvas.width =
+        coreWidth * dpr;
+
+    particleCanvas.height =
+        coreHeight * dpr;
+
+
+    particleContext.setTransform(
+        dpr,
+        0,
+        0,
+        dpr,
+        0,
+        0
+    );
+
+
+    createCoreParticles();
+
+}
+
+
+window.addEventListener(
+    "resize",
+    resizeCore
+);
+
+
+/* =====================================================
+   CREATE SPHERICAL PARTICLES
+===================================================== */
+
+function createCoreParticles() {
+
+    coreParticles = [];
+
+
+    const count = 520;
+
+
+    const radius =
+        Math.min(
+            coreWidth,
+            coreHeight
+        ) * 0.34;
+
+
+    for (
+        let i = 0;
+        i < count;
+        i++
+    ) {
+
+        const phi =
+            Math.acos(
+                1 -
+                2 *
+                (i + 0.5) /
+                count
+            );
+
+
+        const theta =
+            Math.PI *
+            (1 + Math.sqrt(5)) *
+            i;
+
+
+        const randomRadius =
+            radius *
+            (
+                0.72 +
+                Math.random() * 0.28
+            );
+
+
+        coreParticles.push({
+
+            x:
+                Math.sin(phi) *
+                Math.cos(theta) *
+                randomRadius,
+
+            y:
+                Math.cos(phi) *
+                randomRadius,
+
+            z:
+                Math.sin(phi) *
+                Math.sin(theta) *
+                randomRadius,
+
+            size:
+                0.7 +
+                Math.random() * 1.7,
+
+            speed:
+                0.001 +
+                Math.random() * 0.003,
+
+            phase:
+                Math.random() *
+                Math.PI * 2,
+
+            red:
+                Math.random() < 0.52
+
+        });
+
+    }
+
+}
+
+
+resizeCore();
+
+
+/* =====================================================
+   CORE ANIMATION
+===================================================== */
+
+let coreTime = 0;
+
+
+function animateCore() {
+
+    requestAnimationFrame(
+        animateCore
+    );
+
+
+    coreTime += 0.01;
+
+
+    coreEnergy +=
+        (
+            targetEnergy -
+            coreEnergy
+        ) * 0.08;
+
+
+    targetEnergy *= 0.94;
+
+
+    particleContext.clearRect(
+        0,
+        0,
+        coreWidth,
+        coreHeight
+    );
+
+
+    const centerX =
+        coreWidth / 2;
+
+
+    const centerY =
+        coreHeight / 2;
+
+
+    const baseRadius =
+        Math.min(
+            coreWidth,
+            coreHeight
+        ) * 0.34;
+
+
+    for (
+        const particle
+        of coreParticles
+    ) {
+
+        const rotation =
+            coreTime *
+            particle.speed *
+            70;
+
+
+        let x =
+            particle.x *
+            Math.cos(rotation) -
+            particle.z *
+            Math.sin(rotation);
+
+
+        let z =
+            particle.x *
+            Math.sin(rotation) +
+            particle.z *
+            Math.cos(rotation);
+
+
+        let y =
+            particle.y;
+
+
+        const breathing =
+            Math.sin(
+                coreTime * 1.8 +
+                particle.phase
+            ) * 2;
+
+
+        const expansion =
+            coreEnergy * 28;
+
+
+        const scale =
+            (
+                baseRadius +
+                breathing +
+                expansion
+            ) /
+            baseRadius;
+
+
+        x *= scale;
+
+        y *= scale;
+
+        z *= scale;
+
+
+        const perspective =
+            1 /
+            (
+                1 +
+                z /
+                (baseRadius * 3)
+            );
+
+
+        const screenX =
+            centerX +
+            x *
+            perspective;
+
+
+        const screenY =
+            centerY +
+            y *
+            perspective;
+
+
+        const size =
+            particle.size *
+            perspective *
+            (
+                1 +
+                coreEnergy * 2
+            );
+
+
+        const alpha =
+            0.25 +
+            perspective * 0.65;
+
+
+        particleContext.beginPath();
+
+
+        particleContext.arc(
+            screenX,
+            screenY,
+            size,
+            0,
+            Math.PI * 2
+        );
+
+
+        if (
+            particle.red
+        ) {
+
+            particleContext.fillStyle =
+                `rgba(
+                    255,
+                    ${40 + Math.floor(
+                        coreEnergy * 80
+                    )},
+                    ${40 + Math.floor(
+                        coreEnergy * 80
+                    )},
+                    ${alpha}
+                )`;
+
+        }
+
+        else {
+
+            particleContext.fillStyle =
+                `rgba(
+                    80,
+                    150,
+                    255,
+                    ${alpha}
+                )`;
+
+        }
+
+
+        particleContext.fill();
+
+    }
+
+
+    /* CORE REACTION */
+
+    const coreScale =
+        1 +
+        coreEnergy * 0.15;
+
+
+    coreCenter.style.transform =
+        `scale(${coreScale})`;
+
+
+    if (
+        coreEnergy >
+        0.15
+    ) {
+
+        coreCenter.classList.add(
+            "listening"
+        );
+
+    }
+
+    else {
+
+        coreCenter.classList.remove(
+            "listening"
+        );
+
+    }
+
+}
+
+
+animateCore();
+
+
+/* =====================================================
+   MOUSE / POINTER ENERGY
+===================================================== */
+
+wraithOverlay.addEventListener(
+    "pointermove",
+    function(event) {
+
+        const rect =
+            wraithOverlay.getBoundingClientRect();
+
+
+        const x =
+            event.clientX -
+            rect.width / 2;
+
+
+        const y =
+            event.clientY -
+            rect.height / 2;
+
+
+        const distance =
+            Math.sqrt(
+                x * x +
+                y * y
+            );
+
+
+        const influence =
+            Math.max(
+                0,
+                1 -
+                distance / 600
+            );
+
+
+        targetEnergy =
+            Math.max(
+                targetEnergy,
+                influence * 0.35
+            );
+
+    }
+);
+
+
+/* =====================================================
+   VOICE RECOGNITION
+===================================================== */
+
+let recognition = null;
+
+let listening = false;
+
+
+const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+
+if (
+    SpeechRecognition
+) {
+
+    recognition =
+        new SpeechRecognition();
+
+
+    recognition.continuous =
+        false;
+
+
+    recognition.interimResults =
+        false;
+
+
+    recognition.lang =
+        "en-US";
+
+
+    recognition.onstart =
+        function() {
+
+            listening = true;
+
+
+            voiceButton.classList.add(
+                "listening"
+            );
+
+
+            statusText.textContent =
+                "LISTENING";
+
+
+            speakResponse(
+                "Listening."
+            );
+
+
+            targetEnergy =
+                1;
+
+        };
+
+
+    recognition.onresult =
+        function(event) {
+
+            const transcript =
+                event.results[0][0]
+                    .transcript;
+
+
+            input.value =
+                transcript;
+
+
+            targetEnergy =
+                1;
+
+
+            processCommand(
+                transcript
+            );
+
+        };
+
+
+    recognition.onerror =
+        function(event) {
+
+            listening = false;
+
+
+            voiceButton.classList.remove(
+                "listening"
+            );
+
+
+            statusText.textContent =
+                "ONLINE";
+
+
+            if (
+                event.error ===
+                "not-allowed"
+            ) {
+
+                speakResponse(
+                    "Microphone permission is required."
+                );
+
+            }
+
+            else if (
+                event.error ===
+                "network"
+            ) {
+
+                speakResponse(
+                    "The browser voice service cannot be reached. Text commands are still available."
+                );
+
+            }
+
+            else {
+
+                speakResponse(
+                    "Voice recognition is unavailable."
+                );
+
+            }
+
+        };
+
+
+    recognition.onend =
+        function() {
+
+            listening = false;
+
+
+            voiceButton.classList.remove(
+                "listening"
+            );
+
+
+            if (
+                wraithOverlay.classList.contains(
+                    "active"
+                )
+            ) {
+
+                statusText.textContent =
+                    "ONLINE";
+
+            }
+
+        };
+
+}
+
+else {
+
+    voiceButton.disabled =
+        true;
+
+
+    voiceButton.textContent =
+        "VOICE N/A";
+
+}
+
+
+/* =====================================================
+   START VOICE
+===================================================== */
+
+voiceButton.addEventListener(
+    "click",
+    function() {
+
+        if (!recognition) {
+
+            speakResponse(
+                "Voice recognition is not supported by this browser."
+            );
+
+            return;
+
+        }
+
+
+        if (listening) {
+
+            stopListening();
+
+            return;
+
+        }
+
+
+        try {
+
+            recognition.start();
+
+        }
+
+        catch (error) {
+
+            console.log(
+                "Voice start error:",
+                error
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   STOP VOICE
+===================================================== */
+
+function stopListening() {
+
+    if (
+        recognition &&
+        listening
+    ) {
+
+        try {
+
+            recognition.stop();
+
+        }
+
+        catch (error) {
+
+            console.log(error);
+
+        }
+
+    }
+
+
+    listening = false;
+
+
+    voiceButton.classList.remove(
+        "listening"
+    );
+
+
+    if (
+        wraithOverlay.classList.contains(
+            "active"
+        )
+    ) {
+
+        statusText.textContent =
+            "ONLINE";
+
+    }
+
+}
+
+
+/* =====================================================
+   KEYBOARD ESCAPE
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape" &&
+            wraithOverlay.classList.contains(
+                "active"
+            )
+        ) {
+
+            closeWraith();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   NAVIGATION ACTIVE STATE
+===================================================== */
+
+const sections =
+    document.querySelectorAll(
+        "main section"
+    );
+
+
+const navLinks =
+    document.querySelectorAll(
+        "nav a"
+    );
+
+
+window.addEventListener(
+    "scroll",
+    function() {
+
+        let current =
+            "home";
+
+
+        sections.forEach(
+            section => {
+
+                const top =
+                    section.offsetTop -
+                    250;
+
+
+                if (
+                    window.scrollY >= top
+                ) {
+
+                    current =
+                        section.id;
+
+                }
+
+            }
+        );
+
+
+        navLinks.forEach(
+            link => {
+
+                link.classList.remove(
+                    "active"
+                );
+
+
+                if (
+                    link.getAttribute(
+                        "href"
+                    ) ===
+                    "#" + current
+                ) {
+
+                    link.classList.add(
+                        "active"
+                    );
+
+                }
+
+            }
         );
 
     }
